@@ -33,52 +33,7 @@
      <property name="leftMargin">
       <number>10</number>
      </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Input</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="decipher">
-       <property name="text">
-        <string>Decipher</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPlainTextEdit" name="input">
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="placeholderText">
-        <string>Input siphered test</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QTextBrowser" name="actionLog">
-       <property name="placeholderText">
-        <string>Action log</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QTextBrowser" name="output">
-       <property name="placeholderText">
-        <string>Output will be shown here</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Estimated output</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
+     <item row="2" column="3">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLineEdit" name="oldLetter">
@@ -113,9 +68,57 @@
        </item>
       </layout>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="currentLanguage">
+     <item row="1" column="0">
+      <widget class="QPlainTextEdit" name="input">
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="placeholderText">
+        <string>Input siphered test</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_2">
        <property name="text">
+        <string>Estimated output</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="decipher">
+       <property name="text">
+        <string>Decipher</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QTextBrowser" name="output">
+       <property name="placeholderText">
+        <string>Output will be shown here</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Input</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QTextBrowser" name="actionLog">
+       <property name="placeholderText">
+        <string>Action log</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QTextBrowser" name="readme">
+       <property name="lineWrapColumnOrWidth">
+        <number>0</number>
+       </property>
+       <property name="placeholderText">
         <string/>
        </property>
       </widget>
@@ -161,11 +164,20 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionPolish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Polish</string>
    </property>
   </action>
   <action name="actionEnglish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>English</string>
    </property>

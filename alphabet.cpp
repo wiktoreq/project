@@ -4,6 +4,7 @@
 Alphabet::Alphabet(Language lang)
 {
     currLang = lang;
+    (currLang == POLISH) ? len = polish.size() : len = english.size();
     setLang();
 }
 

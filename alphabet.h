@@ -29,8 +29,8 @@ class Alphabet
         int totalDigrams = 0;
         int totalTrigrams = 0;
 
-        Language currLang = POLISH;
-        int len = (currLang == POLISH) ? polish.size() : english.size();
+        Language currLang;
+        int len;
         void updateLang(Language newLang);
 
         Alphabet() = default;

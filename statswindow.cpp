@@ -31,6 +31,8 @@ void StatsWindow::setContent(Alphabet& letterStats, WhichStats whichStats)
     {
         setTrigramStats(letterStats);
     }
+    ui->text_1->moveCursor(QTextCursor::Start);
+    ui->text_2->moveCursor(QTextCursor::Start);
 }
 
 void StatsWindow::setLetterStats(Alphabet& letterStats)
@@ -56,12 +58,12 @@ void StatsWindow::setLetterStats(Alphabet& letterStats)
         {
             out = QString("%1 : %2%")
             .arg(POLISH_LETTER_STATS[i].c)
-                .arg(POLISH_LETTER_STATS[i].freq/100.0);
+                .arg(POLISH_LETTER_STATS[i].freq);
         } else
         {
             out = QString("%1 : %2%")
             .arg(ENGLISH_LETTER_STATS[i].c)
-                .arg(ENGLISH_LETTER_STATS[i].freq/100.0);
+                .arg(ENGLISH_LETTER_STATS[i].freq);
         }
         ui->text_2->append(out);
 
@@ -91,12 +93,12 @@ void StatsWindow::setDigramStats(Alphabet& letterStats)
         {
             out = QString("%1 : %2%")
             .arg(POLISH_DIGRAM_STATS[i].digram)
-                .arg(POLISH_DIGRAM_STATS[i].freq/100.0);
+                .arg(POLISH_DIGRAM_STATS[i].freq);
         } else
         {
             out = QString("%1 : %2%")
             .arg(ENGLISH_DIGRAM_STATS[i].digram)
-                .arg(ENGLISH_DIGRAM_STATS[i].freq/100.0);
+                .arg(ENGLISH_DIGRAM_STATS[i].freq);
         }
         ui->text_2->append(out);
     }
@@ -125,12 +127,12 @@ void StatsWindow::setTrigramStats(Alphabet& letterStats)
         {
             out = QString("%1 : %2%")
             .arg(POLISH_TRIGRAM_STATS[i].trigram)
-                .arg(POLISH_TRIGRAM_STATS[i].freq/100.0);
+                .arg(POLISH_TRIGRAM_STATS[i].freq);
         } else
         {
             out = QString("%1 : %2%")
             .arg(ENGLISH_TRIGRAM_STATS[i].trigram)
-                .arg(ENGLISH_TRIGRAM_STATS[i].freq/100.0);
+                .arg(ENGLISH_TRIGRAM_STATS[i].freq);
         }
         ui->text_2->append(out);
     }
