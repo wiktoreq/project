@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>978</width>
+      <height>548</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Input</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="decipher">
+       <property name="text">
+        <string>Decipher</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPlainTextEdit" name="input">
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="placeholderText">
+        <string>Input siphered test</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QTextBrowser" name="actionLog">
+       <property name="placeholderText">
+        <string>Action log</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QTextBrowser" name="output">
+       <property name="placeholderText">
+        <string>Output will be shown here</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Estimated output</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLineEdit" name="oldLetter">
+         <property name="placeholderText">
+          <string>Type in the letter to swap</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="letterchange">
+         <property name="text">
+          <string>Swap letters</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="newLetter">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Type in the letter to swap</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="resetToDefault">
+         <property name="text">
+          <string>Reset to default</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="currentLanguage">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionPolish"/>
+    <addaction name="actionEnglish"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionRead_from_file"/>
+    <addaction name="actionSave_output_to_file"/>
+   </widget>
+   <widget class="QMenu" name="menuStatistics">
+    <property name="title">
+     <string>Statistics</string>
+    </property>
+    <addaction name="action_letters"/>
+    <addaction name="action_digrams"/>
+    <addaction name="action_trigrams"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuStatistics"/>
+   <addaction name="menuSettings"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionPolish">
+   <property name="text">
+    <string>Polish</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionRead_from_file">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Read from file</string>
+   </property>
+  </action>
+  <action name="actionSave_output_to_file">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentSaveAs"/>
+   </property>
+   <property name="text">
+    <string>Save output to file</string>
+   </property>
+  </action>
+  <action name="actionLetter_occurances">
+   <property name="text">
+    <string>Letter occurances</string>
+   </property>
+  </action>
+  <action name="action_letters">
+   <property name="text">
+    <string>Letters</string>
+   </property>
+  </action>
+  <action name="action_digrams">
+   <property name="text">
+    <string>Digrams</string>
+   </property>
+  </action>
+  <action name="action_trigrams">
+   <property name="text">
+    <string>Trigrams</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
