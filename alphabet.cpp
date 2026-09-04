@@ -4,10 +4,21 @@
 Alphabet::Alphabet(Language lang)
 {
     currLang = lang;
-    (currLang) ? len = ENLEN : len = PLLEN;
+    setLang();
+}
+
+void Alphabet::updateLang(Language newLang)
+{
+    currLang = newLang;
+    (currLang == POLISH) ? len = polish.size() : len = english.size();
+    setLang();
+}
+
+void Alphabet::setLang()
+{
+    alphabet.clear();
     alphabet.resize(len);
-    digrams.resize(0);
-    trigrams.resize(0);
+
     switch (currLang)
     {
     case POLISH:

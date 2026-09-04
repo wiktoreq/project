@@ -1,9 +1,6 @@
 #ifndef LETTER_H
 #define LETTER_H
 
-#define PLLEN 35
-#define ENLEN 26
-
 #include "data.h"
 
 enum Language
@@ -21,16 +18,20 @@ struct dict
 class Alphabet
 {
     private:
-
+        void setLang();
     public:
         std::vector<letter> alphabet;
         std::vector<digram> digrams;
         std::vector<trigram> trigrams;
         std::vector<dict> dictionary;
+
+        int totalLetters = 0;
         int totalDigrams = 0;
         int totalTrigrams = 0;
-        Language currLang;
-        int len;
+
+        Language currLang = POLISH;
+        int len = (currLang == POLISH) ? polish.size() : english.size();
+        void updateLang(Language newLang);
 
         Alphabet() = default;
         Alphabet(Language lang);

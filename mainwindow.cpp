@@ -24,8 +24,8 @@ void MainWindow::on_decipher_clicked()
     if(!input.isEmpty())
     {
         stats = Stats(currLan);
-        ui->output->clear();
 
+        ui->output->clear();
 
         stats.calcFreq(input);
 
@@ -39,6 +39,8 @@ void MainWindow::on_decipher_clicked()
 
 void MainWindow::decipherInput()
 {
+    stats.letterStats.totalLetters = 0;
+
     stats.letterStats.digrams.clear();
     stats.letterStats.trigrams.clear();
     stats.letterStats.totalDigrams = 0;
@@ -50,6 +52,12 @@ void MainWindow::decipherInput()
     {
         QChar curr = input[i];
         buffer.append(curr);
+
+        if(curr.isLetter())
+        {
+            stats.letterStats.totalLetters++;
+        }
+
         if(curr == QChar(' '))
         {
             stats.calculateDigrams(buffer);
@@ -105,19 +113,15 @@ void MainWindow::on_actionSave_output_to_file_triggered()
 
 void MainWindow::on_actionEnglish_triggered()
 {
-    stats.letterStats.currLang = ENGLISH;
-    stats.letterStats.len= ENLEN;
+    stats.letterStats.updateLang(ENGLISH);
     currLan = ENGLISH;
-    currLen = ENLEN;
 }
 
 
 void MainWindow::on_actionPolish_triggered()
 {
-    stats.letterStats.currLang = POLISH;
-    stats.letterStats.len= PLLEN;
+    stats.letterStats.updateLang(POLISH);
     currLan = POLISH;
-    currLen = PLLEN;
 }
 
 

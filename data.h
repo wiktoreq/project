@@ -28,8 +28,8 @@ struct frequency
     double freq;
 };
 
-inline const QString polish = "aąbcćdeęfghijklłmnoópqrsśtuvwxyzźż";
-inline const QString english = "abcdefghijklmnńopqrstuvwxyz";
+inline const QString polish = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+inline const QString english = "abcdefghijklmnopqrstuvwxyz";
 
 const std::vector<frequency> POLISH_LETTER_STATS = {
     { QChar('a'), 8.91 },

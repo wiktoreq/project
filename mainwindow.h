@@ -42,7 +42,6 @@ class MainWindow : public QMainWindow
 
     private:
         Language currLan = POLISH;
-        int currLen = PLLEN;
         void decipherInput();
         QString input = "";
         Stats stats;

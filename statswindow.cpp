@@ -50,7 +50,7 @@ void StatsWindow::setLetterStats(Alphabet& letterStats)
         out = QString("%1 : %2 : %3%")
         .arg(letterStats.alphabet[i].c)
             .arg(letterStats.alphabet[i].freq)
-            .arg(letterStats.alphabet[i].freq/(alphabetSize*100.0));
+            .arg(letterStats.alphabet[i].freq*100.0/(letterStats.totalLetters));
         ui->text_1->append(out);
         if(!letterStats.currLang)
         {
@@ -76,12 +76,12 @@ void StatsWindow::setDigramStats(Alphabet& letterStats)
               .arg((letterStats.currLang) ? "english" : "polish");
     ui->text_2->append(out);
 
-    for(int i = 0; i < letterStats.totalDigrams; i++)
+    for(size_t i = 0; i < letterStats.digrams.size(); i++)
     {
         out = QString("%1 : %2 : %3%")
         .arg(letterStats.digrams[i].digram)
             .arg(letterStats.digrams[i].freq)
-            .arg(letterStats.digrams[i].freq/(letterStats.totalDigrams*100.0));
+            .arg(letterStats.digrams[i].freq*100.0/letterStats.totalDigrams);
         ui->text_1->append(out);
     }
 
@@ -110,12 +110,12 @@ void StatsWindow::setTrigramStats(Alphabet& letterStats)
               .arg((letterStats.currLang) ? "english" : "polish");
     ui->text_2->append(out);
 
-    for(int i = 0; i < letterStats.totalTrigrams; i++)
+    for(size_t i = 0; i < letterStats.trigrams.size(); i++)
     {
         out = QString("%1 : %2 : %3%")
         .arg(letterStats.trigrams[i].trigram)
             .arg(letterStats.trigrams[i].freq)
-            .arg(letterStats.trigrams[i].freq/(letterStats.totalTrigrams*100.0));
+            .arg(letterStats.trigrams[i].freq*100.0/letterStats.totalTrigrams);
         ui->text_1->append(out);
     }
 
