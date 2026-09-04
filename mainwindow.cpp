@@ -11,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionLog->setStyleSheet("QTextBrowser { font-size: 8pt; }");
 
     ui->readme->append("<b>README:\n");
-    ui->readme->append("In file menu you can choose to load input or save output to a txt file. \n");
-    ui->readme->append("In language menu you can choose what language will the program use for deciphering and statistics\n");
-    ui->readme->append("From statistics menu you can choose: letter stats, digram stats and trigram stats. The data for both polish and english is taken from this site: http://practicalcryptography.com/cryptanalysis/letter-frequencies-various-languages/ \n");
-    ui->readme->append("When changing a letter in the output in reality 2 letters are being changed. For example changing 'a' to 'b' also changes 'b' to 'a' so no letter appears twice in the deciphering dictionary \n");
-    ui->readme->append("In the /examples directory you can find few files with example ciphered and deciphered both long and short, in english and in polish. They were made using a cesar's cipher using: https://cryptii.com/pipes/caesar-cipher/ online tool \n");
+    ui->readme->append("W file menu można wybrać plik do wczytania lub zapisać wynik deszyfrowania do pliku \n");
+    ui->readme->append("W menu języka można wybrać język dla jakiego przeprowadzane jest deszyfrowanie oraz wyświetlane są statystyki\n");
+    ui->readme->append("Z statistics menu można wybrać statystyki liter, digramów oraz trigramów. Dokładne dane na temat występowania ich w danym języku znalazłem na stronie: http://practicalcryptography.com/cryptanalysis/letter-frequencies-various-languages/. Dane są posortowane od najczęściej występujących do najrzadziej \n");
+    ui->readme->append("W folderze /examples można znaleźć przykładowe pliki po polsku i angielku, przed i po zaszyfrowaniu do załadowania do programu. Szyfrowanie użyte to szyfr cezara z przesunięciem 7 na stronie: https://cryptii.com/pipes/caesar-cipher/. Do szyfrowania w języku polskim uzyłem również znaków polskich (jak w alfabecie 'polish' w pliku data.h) \n");
+    ui->readme->append("Tekst do zdeszyfrowania powinien być naprawdę długi. W języku polskim dla 6000 znaków program uzyskuje ok. 25% poprawnego deszyfrowania - angielski znacznie więcej ze względu na charakterystykę występowania liter w języku polskim\n");
     ui->readme->moveCursor(QTextCursor::Start);
 }
 
@@ -92,16 +92,19 @@ void MainWindow::on_actionRead_from_file_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open text file"), "../../../", tr("Text Files (*txt)"));
     QFile file(fileName);
+
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
         return;
+    }
 
     ui->input->clear();
-    while (!file.atEnd())
-    {
-        QByteArray byteLine = file.readLine();
-        QString line = QString(byteLine);
-        ui->input->appendPlainText(line);
-    }
+    QString fileContent = "";
+
+    QByteArray byteLine = file.readAll();;
+    QString content = QString(byteLine);
+    ui->input->setPlainText(content);
+
     QString out = QString("-> File opened: %1").arg(fileName);
     ui->actionLog->append(out);
     file.close();
@@ -113,8 +116,11 @@ void MainWindow::on_actionSave_output_to_file_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "../../../", tr("Text Files (*txt)"));
     QFile file(fileName);
+
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
         return;
+    }
 
     QString stringBuffer = ui->output->toPlainText();
     file.write(stringBuffer.toUtf8());
@@ -122,6 +128,7 @@ void MainWindow::on_actionSave_output_to_file_triggered()
     ui->actionLog->append(out);
     file.close();
 }
+
 
 void MainWindow::on_actionEnglish_triggered()
 {
@@ -138,7 +145,7 @@ void MainWindow::on_actionPolish_triggered()
     stats.letterStats.updateLang(POLISH);
     currLan = POLISH;
     ui->actionPolish->setChecked(true);
-    ui->actionEnglish->setChecked(true);
+    ui->actionEnglish->setChecked(false);
     ui->actionLog->append("-> <font color='blue'>Deciphering language changed to polish");
 }
 

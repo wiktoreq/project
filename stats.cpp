@@ -1,6 +1,6 @@
 #include "stats.h"
 #include <QStringView>
-#include "quicksort.h"
+
 
 Stats::Stats(Language lang)
 {
@@ -18,12 +18,14 @@ void Stats::calcFreq(QString input)
                 if(polish[j] == input[i])
                 {
                     letterStats.alphabet[j].freq++;
+                    break;
                 }
             } else
             {
                 if(english[j] == input[i])
                 {
                     letterStats.alphabet[j].freq++;
+                    break;
                 }
             }
         }
@@ -36,7 +38,7 @@ void Stats::decipher(QString& input)
 {
     for(qsizetype i = 0; i < input.length(); i++)
     {
-        for(int j = 0; j < letterStats.len; j++)
+        for(int j = 0; j < letterStats.dictionary.size(); j++)
         {
             if(input[i] == letterStats.dictionary[j].c)
             {
@@ -51,11 +53,11 @@ void Stats::translate(std::vector<letter> alphabet)
 {
     letterStats.dictionary.resize(letterStats.len);
     for(int i = 0; i < letterStats.len; i++) {
-        if(!letterStats.currLang)
+        if(letterStats.currLang == POLISH)
         {
             letterStats.dictionary[i].c = alphabet[i].c;
             letterStats.dictionary[i].tc = POLISH_LETTER_STATS[i].c;
-        } else
+        } else if (letterStats.currLang == ENGLISH)
         {
             letterStats.dictionary[i].c = alphabet[i].c;
             letterStats.dictionary[i].tc = ENGLISH_LETTER_STATS[i].c;
@@ -67,7 +69,7 @@ void Stats::translate(std::vector<letter> alphabet)
 void Stats::changeDictionary(QChar oldC, QChar newC)
 {
     int buffer = -1;
-    for(int i = 0; i < letterStats.len; i++)
+    for(int i = 0; i < letterStats.dictionary.size(); i++)
     {
         if(letterStats.dictionary[i].tc == oldC)
         {
@@ -76,7 +78,7 @@ void Stats::changeDictionary(QChar oldC, QChar newC)
             break;
         }
     }
-    for(int i = 0; i < letterStats.len; i++)
+    for(int i = 0; i < letterStats.dictionary.size(); i++)
     {
         if(letterStats.dictionary[i].tc == newC && buffer != i)
         {

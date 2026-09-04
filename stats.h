@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 #include "alphabet.h"
+#include "quicksort.h"
 
 class Stats
 {

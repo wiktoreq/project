@@ -4,19 +4,18 @@
 Alphabet::Alphabet(Language lang)
 {
     currLang = lang;
-    (currLang == POLISH) ? len = polish.size() : len = english.size();
     setLang();
 }
 
 void Alphabet::updateLang(Language newLang)
 {
     currLang = newLang;
-    (currLang == POLISH) ? len = polish.size() : len = english.size();
     setLang();
 }
 
 void Alphabet::setLang()
 {
+    len = (currLang == POLISH) ? polish.size() : english.size();
     alphabet.clear();
     alphabet.resize(len);
 
@@ -26,12 +25,14 @@ void Alphabet::setLang()
         for(int i = 0; i < len; i++)
         {
             alphabet[i].c = polish[i];
+            alphabet[i].freq = 0;
         }
         break;
     case ENGLISH:
         for(int i = 0; i < len; i++)
         {
             alphabet[i].c = english[i];
+            alphabet[i].freq = 0;
         }
         break;
     }
