@@ -1,7 +1,7 @@
 #ifndef LETTER_H
 #define LETTER_H
 
-#define PLLEN 34
+#define PLLEN 35
 #define ENLEN 26
 
 #include "data.h"

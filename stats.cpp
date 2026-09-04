@@ -94,9 +94,9 @@ void Stats::calculateDigrams(QString buffer)
 {
     QString input = buffer;
 
-    for(qsizetype i = 0; i < input.length(); i++)
+    for (qsizetype i = input.length() - 1; i >= 0; --i)
     {
-        if(!input[i].isLetter())
+        if (!input[i].isLetter())
         {
             input.remove(i, 1);
         }
@@ -135,9 +135,9 @@ void Stats::calculateTrigrams(QString buffer)
 {
     QString input = buffer;
 
-    for(qsizetype i = 0; i < input.length(); i++)
+    for (qsizetype i = input.length() - 1; i >= 0; --i)
     {
-        if(!input[i].isLetter())
+        if (!input[i].isLetter())
         {
             input.remove(i, 1);
         }
@@ -174,12 +174,20 @@ void Stats::calculateTrigrams(QString buffer)
 
 void Stats::sortDigrams()
 {
-    QuickSort::quickSortDigrams(letterStats.digrams, 0, letterStats.totalDigrams - 1);
+    if(letterStats.digrams.size() < 2)
+    {
+        return;
+    }
+    QuickSort::quickSortDigrams(letterStats.digrams, 0, letterStats.digrams.size() - 1);
 }
 
 void Stats::sortTrigrams()
 {
-    QuickSort::quickSortTrigrams(letterStats.trigrams, 0, letterStats.totalTrigrams - 1);
+    if(letterStats.trigrams.size() < 2)
+    {
+        return;
+    }
+    QuickSort::quickSortTrigrams(letterStats.trigrams, 0, letterStats.trigrams.size() - 1);
 }
 
 

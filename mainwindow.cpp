@@ -39,7 +39,13 @@ void MainWindow::on_decipher_clicked()
 
 void MainWindow::decipherInput()
 {
+    stats.letterStats.digrams.clear();
+    stats.letterStats.trigrams.clear();
+    stats.letterStats.totalDigrams = 0;
+    stats.letterStats.totalTrigrams = 0;
+
     QString buffer = QString(" ");
+
     for(qsizetype i = 0; i < input.length(); i++)
     {
         QChar curr = input[i];
@@ -99,6 +105,8 @@ void MainWindow::on_actionSave_output_to_file_triggered()
 
 void MainWindow::on_actionEnglish_triggered()
 {
+    stats.letterStats.currLang = ENGLISH;
+    stats.letterStats.len= ENLEN;
     currLan = ENGLISH;
     currLen = ENLEN;
 }
@@ -106,6 +114,8 @@ void MainWindow::on_actionEnglish_triggered()
 
 void MainWindow::on_actionPolish_triggered()
 {
+    stats.letterStats.currLang = POLISH;
+    stats.letterStats.len= PLLEN;
     currLan = POLISH;
     currLen = PLLEN;
 }
